@@ -21,10 +21,7 @@ from .views import HomeView
 app_name = "core"
 
 urlpatterns = [
-
-    path('', HomeView.as_view() , name="index"),
     path('login/', views.showlogin , name="login"),
     path('logout/',views.logout_request,name="logout"),
-    path('register/', views.showRegister, name="register"),
-    path('checklogin/', views.checklogin , name="checklogin"),
+    path('register/', views.showRegister, name="showregister"),
 ]

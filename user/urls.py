@@ -1,4 +1,4 @@
-"""ecommerce URL Configuration
+"""shopp URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -14,15 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from django.conf.urls.static import static
-from django.conf import settings
+from django.urls import path
+from . import views
+from .views import RegisterView
+
+app_name = "user"
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('store.urls')),
-    path('', include('core.urls')),
-    path('', include('user.urls')),
+    path('', RegisterView.as_view() , name="index"),
+    path('register/', views.register, name="register"),
+    path('checklogin/', views.checklogin , name="checklogin"),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
